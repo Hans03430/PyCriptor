@@ -4,6 +4,7 @@ gi.require_version('Gtk', '3.0')
 
 from gi.repository import Gtk
 from pycryptor.commons.constants import DATA_DIRECTORY
+from pycryptor.gui.views.caesar_view import CaesarView
 
 
 @Gtk.Template(filename=f'{DATA_DIRECTORY}/ui/HeaderBar.glade')
@@ -21,10 +22,10 @@ class HeaderBar(Gtk.HeaderBar):
         self.app = application
         self.stack = Gtk.Stack()
         # Add views to the stack
-        self.stack.add_titled(Gtk.Label(), 'Caesar', 'Caesar')
-        self.stack.add_titled(Gtk.Button(), 'Affine', 'Affine')
-        self.stack.add_titled(Gtk.Label(), 'Atbash', 'Atbash')
-        self.stack.add_titled(Gtk.Label(), 'Vigenère', 'Vigenère')
+        self.stack.add_titled(CaesarView(self.app), 'Caesar', 'Caesar')
+        self.stack.add_titled(CaesarView(self.app), 'Affine', 'Affine')
+        self.stack.add_titled(CaesarView(self.app), 'Atbash', 'Atbash')
+        self.stack.add_titled(CaesarView(self.app), 'Vigenère', 'Vigenère')
         # Add stack to switcher
         self.pycryptor_stack_switcher.set_stack(self.stack)
 
