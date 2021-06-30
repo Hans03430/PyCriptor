@@ -2,6 +2,17 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkTextBuffer" id="ciphered_text_buffer">
+    <signal name="changed" handler="enable_disable_decryption_button" swapped="no"/>
+  </object>
+  <object class="GtkTextBuffer" id="plain_text_buffer">
+    <signal name="changed" handler="enable_disable_encryption_button" swapped="no"/>
+  </object>
   <template class="CaesarView" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -40,20 +51,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="uppercase_entry">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="is-focus">True</property>
-                <property name="width-chars">50</property>
-                <property name="placeholder-text" translatable="yes">abcdefghijklmnopqrstuvwxyz</property>
-                <signal name="changed" handler="check_alphabet_on_changed" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -77,6 +74,7 @@
                 <property name="input-purpose">number</property>
                 <property name="adjustment">adjustment1</property>
                 <property name="numeric">True</property>
+                <signal name="changed" handler="check_shifts_on_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left-attach">1</property>
@@ -102,6 +100,8 @@
                 <property name="progress-pulse-step">0.099999999776482579</property>
                 <property name="placeholder-text" translatable="yes">ABCDEFGHIJKLMNOPGRSTUVWXYZ</property>
                 <signal name="changed" handler="check_alphabet_on_changed" swapped="no"/>
+                <signal name="changed" handler="enable_disable_decryption_button" swapped="no"/>
+                <signal name="changed" handler="enable_disable_encryption_button" swapped="no"/>
               </object>
               <packing>
                 <property name="left-attach">1</property>
@@ -153,6 +153,22 @@
               </packing>
             </child>
             <child>
+              <object class="GtkEntry" id="uppercase_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="is-focus">True</property>
+                <property name="width-chars">50</property>
+                <property name="placeholder-text" translatable="yes">abcdefghijklmnopqrstuvwxyz</property>
+                <signal name="changed" handler="check_alphabet_on_changed" swapped="no"/>
+                <signal name="changed" handler="enable_disable_decryption_button" swapped="no"/>
+                <signal name="changed" handler="enable_disable_encryption_button" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
               <placeholder/>
             </child>
             <child>
@@ -187,9 +203,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="plain_entry">
+              <object class="GtkTextView">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
+                <property name="wrap-mode">word</property>
+                <property name="justification">fill</property>
+                <property name="buffer">plain_text_buffer</property>
+                <signal name="insert-at-cursor" handler="enable_disable_encryption_button" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -212,9 +232,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="ciphered_entry">
+              <object class="GtkTextView">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
+                <property name="buffer">ciphered_text_buffer</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -251,9 +272,4 @@
       </packing>
     </child>
   </template>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">100</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
 </interface>
