@@ -41,6 +41,9 @@ class BaseController(ABC):
     @cipher.setter
     def cipher(self, cipher: BaseCipher) -> None:
         self.__cipher = cipher
+        # Assign current alphabet by default
+        if self.alphabet:
+            self.__cipher.alphabet = self.alphabet
 
     def add_new_alphabet(
         self,
@@ -64,6 +67,7 @@ class BaseController(ABC):
         try:
             new_alphabet = Alphabet(language=language, lower=lower, upper=upper)
             self.alphabet = new_alphabet
+            self.cipher.alphabet = self.alphabet
         except Exception as e:
             raise e
 

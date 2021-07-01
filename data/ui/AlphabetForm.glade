@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <template class="AlphabetForm" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <placeholder/>
+    </child>
+  </template>
+  <object class="GtkLabel" id="lowercase_alphabet_label">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label" translatable="yes">Lowercase Alphabet</property>
+  </object>
+  <object class="GtkEntry" id="lowercase_entry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="has-focus">True</property>
+    <property name="is-focus">True</property>
+    <property name="width-chars">50</property>
+    <signal name="changed" handler="check_alphabet_on_changed" swapped="no"/>
+  </object>
+  <object class="GtkRevealer" id="lowercase_error_revealer">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="transition-type">none</property>
+    <child>
+      <object class="GtkLabel" id="lowercase_error_label">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">label</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkLabel" id="uppercase_alphabet_label">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label" translatable="yes">Uppercase Alphabet</property>
+  </object>
+  <object class="GtkEntry" id="uppercase_entry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="width-chars">50</property>
+    <signal name="changed" handler="check_alphabet_on_changed" swapped="no"/>
+  </object>
+  <object class="GtkRevealer" id="uppercase_error_revealer">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="transition-type">none</property>
+    <child>
+      <object class="GtkLabel" id="uppercase_error_label">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">label</property>
+      </object>
+    </child>
+  </object>
+</interface>

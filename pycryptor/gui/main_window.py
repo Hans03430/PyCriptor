@@ -24,6 +24,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.header_bar = HeaderBar(self.app)
         self.set_titlebar(self.header_bar)
         self.add(self.header_bar.stack)
+        self.maximize()
 
     @property
     def app(self) -> Gtk.Application:

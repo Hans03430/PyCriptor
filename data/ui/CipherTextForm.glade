@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkTextBuffer" id="ciphered_buffer">
+    <signal name="changed" handler="enable_disable_decryption_button" swapped="no"/>
+  </object>
+  <object class="GtkButton" id="decrypt_button">
+    <property name="label" translatable="yes">Decrypt</property>
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="receives-default">True</property>
+    <signal name="clicked" handler="decrypt_text" swapped="no"/>
+  </object>
+  <object class="GtkButton" id="encrypt_button">
+    <property name="label" translatable="yes">Encrypt</property>
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="receives-default">True</property>
+    <signal name="clicked" handler="encrypt_text" swapped="no"/>
+  </object>
+  <object class="GtkTextBuffer" id="plain_buffer">
+    <signal name="changed" handler="enable_disable_encryption_button" swapped="no"/>
+  </object>
+  <template class="CipherTextForm" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkLabel" id="plain_label">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Plain text (Characters not in the Alphabet will remain the same)</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkTextView" id="plain_text_view">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="buffer">plain_buffer</property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="ciphered_label">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Ciphered Text (Characters not in the Alphabet will remain the same)</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkTextView" id="ciphered_text_view">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="buffer">ciphered_buffer</property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+  </template>
+</interface>
