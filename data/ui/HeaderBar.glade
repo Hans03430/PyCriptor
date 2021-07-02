@@ -40,40 +40,88 @@
       </object>
     </child>
   </object>
-  <template class="HeaderBar" parent="GtkHeaderBar">
+  <template class="HeaderBar" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="show-close-button">True</property>
-    <child type="title">
-      <object class="GtkStackSwitcher" id="pycryptor_stack_switcher">
+    <child>
+      <object class="GtkBox" id="left_headerbar_box">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuButton" id="menubutton1">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="focus-on-click">False</property>
-        <property name="receives-default">True</property>
-        <property name="use-popover">False</property>
-        <property name="popover">menu_popover</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkHeaderBar" id="left_headerbar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="icon-name">open-menu-symbolic</property>
+            <child>
+              <object class="GtkMenuButton" id="pycryptor_menu_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
+                <property name="receives-default">True</property>
+                <property name="use-popover">False</property>
+                <property name="popover">menu_popover</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="icon-name">open-menu-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>
-        <property name="pack-type">end</property>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkHeaderBar" id="right_headerbar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-close-button">True</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
       </packing>
     </child>
   </template>
   <object class="GtkPopover" id="menu_popover">
     <property name="can-focus">False</property>
-    <property name="relative-to">menubutton1</property>
+    <property name="relative-to">pycryptor_menu_button</property>
     <property name="position">bottom</property>
     <child>
       <object class="GtkStack">

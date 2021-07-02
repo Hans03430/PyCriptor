@@ -7,7 +7,35 @@
     <property name="show-menubar">False</property>
     <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
-      <placeholder/>
+      <!-- n-columns=2 n-rows=1 -->
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkStack" id="pycryptor_sidebar_stack">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStackSidebar" id="pycryptor_sidebar">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="stack">pycryptor_sidebar_stack</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+      </object>
     </child>
   </template>
 </interface>
