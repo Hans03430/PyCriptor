@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mathmagic
+Comment=Encrypt/decrypt your plain text.
+Icon=${SNAP}/meta/gui/icon.png
+Exec=pycryptor %U
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=encrypt,decrypt,encryption,decryption;
+StartupNotify=false
