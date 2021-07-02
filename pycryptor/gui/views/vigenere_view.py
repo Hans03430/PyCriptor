@@ -75,6 +75,12 @@ class VigenereView(Gtk.Box):
                     'changed',
                     callback
                 )
+            # Add view checking to alphabet form.
+            if entry in [
+                self.alphabet_form.uppercase_entry,
+                self.alphabet_form.lowercase_entry
+            ]:
+                entry.connect('changed', self.check_key_on_changed)
 
         # Add buttons to action bar
         self.actionbar.pack_start(self.cipher_text_form.encrypt_button)

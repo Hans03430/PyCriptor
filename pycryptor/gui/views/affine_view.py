@@ -80,6 +80,13 @@ class AffineView(Gtk.Box):
                     'changed',
                     callback
                 )
+            # Add current view callbacks to alphabet form
+            if entry in [
+                self.alphabet_form.uppercase_entry,
+                self.alphabet_form.lowercase_entry
+            ]:
+                entry.connect('changed', self.check_a_coeff_on_changed)
+                entry.connect('changed', self.check_b_coeff_on_changed)
 
         # Add buttons to action bar
         self.actionbar.pack_start(self.cipher_text_form.encrypt_button)

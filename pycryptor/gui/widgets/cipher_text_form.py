@@ -2,13 +2,15 @@ import gi
 
 gi.require_version('Gtk', '3.0')
 
+from ciphers.cipher.base_cipher import BaseCipher
+from gi.repository import GLib
 from gi.repository import Gtk
 from pycryptor.commons.constants import DATA_DIRECTORY
 from pycryptor.commons.constants import DIALOG_OK_ICON
 from pycryptor.commons.constants import DIALOG_CANCEL_ICON
 from pycryptor.commons.constants import ENGLISH_LOWERCASE
 from pycryptor.commons.constants import ENGLISH_UPPERCASE
-from ciphers.cipher.base_cipher import BaseCipher
+from pycryptor.commons.threading import threaded
 
 
 @Gtk.Template(filename=f'{DATA_DIRECTORY}/ui/CipherTextForm.glade')
@@ -120,6 +122,7 @@ class CipherTextForm(Gtk.Box):
         return self.is_cipher_form_correct and len(ciphered_text) > 0
 
     @Gtk.Template.Callback()
+    @threaded
     def encrypt_text(self, widget: Gtk.Button) -> None:
         '''Callback that starts the encryption of a the plain text.
         '''
@@ -130,9 +133,13 @@ class CipherTextForm(Gtk.Box):
         )
 
         ciphered_text = self.cipher_controller.encrypt(plain_text)
-        self.ciphered_buffer.set_text(ciphered_text)
+        GLib.idle_add(
+            self.ciphered_buffer.set_text,
+            ciphered_text
+        )
 
     @Gtk.Template.Callback()
+    @threaded
     def decrypt_text(self, widget: Gtk.Button) -> None:
         '''Callback that starts the decryption of a the plain text.
         '''
@@ -143,4 +150,7 @@ class CipherTextForm(Gtk.Box):
         )
 
         plain_text = self.cipher_controller.decrypt(ciphered_text)
-        self.plain_buffer.set_text(plain_text)
+        GLib.idle_add(
+            self.plain_buffer.set_text,
+            plain_text
+        )

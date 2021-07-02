@@ -8,7 +8,7 @@ setup(
     name='pycryptor',
     author='Hans Matos',
     author_email='hans.matos@pucp.edu.pe',
-    version='1.0.1',
+    version='1.0.2',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
