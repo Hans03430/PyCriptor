@@ -2,17 +2,42 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkStack" id="pycryptor_stack">
-    <property name="visible">True</property>
+  <object class="GtkAboutDialog" id="pycryptor_about_dialog">
     <property name="can-focus">False</property>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
+    <property name="type-hint">dialog</property>
+    <property name="program-name">PyCryptor</property>
+    <property name="version">1.0.2</property>
+    <property name="comments" translatable="yes">GUI program that does plain text encryption/decryption.</property>
+    <property name="website">https://github.com/Hans03430/PyCryptor</property>
+    <property name="authors">Hans Matos</property>
+    <property name="logo-icon-name">image-missing</property>
+    <property name="license-type">gpl-3-0</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
     </child>
   </object>
   <template class="HeaderBar" parent="GtkHeaderBar">
@@ -23,15 +48,16 @@
       <object class="GtkStackSwitcher" id="pycryptor_stack_switcher">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="stack">pycryptor_stack</property>
       </object>
     </child>
     <child>
-      <object class="GtkMenuButton">
+      <object class="GtkMenuButton" id="menubutton1">
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="focus-on-click">False</property>
         <property name="receives-default">True</property>
+        <property name="use-popover">False</property>
+        <property name="popover">menu_popover</property>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
@@ -45,4 +71,43 @@
       </packing>
     </child>
   </template>
+  <object class="GtkPopover" id="menu_popover">
+    <property name="can-focus">False</property>
+    <property name="relative-to">menubutton1</property>
+    <property name="position">bottom</property>
+    <child>
+      <object class="GtkStack">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">12</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkModelButton" id="about_model_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="text" translatable="yes">About PyCryptor</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">page0</property>
+            <property name="title" translatable="yes">page0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

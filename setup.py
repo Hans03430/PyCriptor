@@ -15,7 +15,7 @@ setup(
     install_requires=[
         'ciphers @ git+ssh://git@github.com/Hans03430/Ciphers@main'
     ],
-    package_data={'': ['*.glade']},
+    package_data={'': ['*.glade', '*.png']},
     #entry_points={
     #"console_scripts": [
     #    "mathmagic=mathmagic.command_line:main"]

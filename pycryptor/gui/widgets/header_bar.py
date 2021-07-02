@@ -2,6 +2,7 @@ import gi
 
 gi.require_version('Gtk', '3.0')
 
+from gi.repository import GdkPixbuf
 from gi.repository import Gtk
 from pycryptor.commons.constants import DATA_DIRECTORY
 from pycryptor.gui.views.affine_view import AffineView
@@ -19,6 +20,8 @@ class HeaderBar(Gtk.HeaderBar):
     __gtype_name__ = 'HeaderBar'
 
     pycryptor_stack_switcher = Gtk.Template.Child()
+    menu_popover = Gtk.Template.Child()
+    pycryptor_about_dialog = Gtk.Template.Child()
 
     def __init__(self, application: Gtk.Application) -> None:
         super().__init__()
@@ -31,6 +34,13 @@ class HeaderBar(Gtk.HeaderBar):
         self.stack.add_titled(VigenereView(self.app), 'Vigenère', 'Vigenère')
         # Add stack to switcher
         self.pycryptor_stack_switcher.set_stack(self.stack)
+        # Set about dialog logo
+        self.pycryptor_about_dialog.set_logo(
+            GdkPixbuf.Pixbuf.new_from_file_at_size(
+                f'{DATA_DIRECTORY}/resources/icon.png',
+                64, 64
+            )
+        )
 
     @property
     def app(self) -> Gtk.Application:
@@ -47,3 +57,9 @@ class HeaderBar(Gtk.HeaderBar):
     @stack.setter
     def stack(self, stack: Gtk.Stack) -> None:
         self.__stack = stack
+
+    @Gtk.Template.Callback()
+    def show_about_dialog(self, widget: Gtk.Button) -> None:
+        '''Shows the About PyCryptor dialog.
+        '''
+        self.pycryptor_about_dialog.show_all()
