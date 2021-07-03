@@ -17,20 +17,13 @@ class HeaderBar(Gtk.Box):
 
     left_headerbar = Gtk.Template.Child()
     right_headerbar = Gtk.Template.Child()
-    left_headerbar_box = Gtk.Template.Child()
     pycryptor_menu_button = Gtk.Template.Child()
     menu_popover = Gtk.Template.Child()
     pycryptor_about_dialog = Gtk.Template.Child()
 
-    def __init__(
-        self,
-        application: Gtk.Application,
-        window: Gtk.ApplicationWindow
-    ) -> None:
+    def __init__(self, application: Gtk.Application,) -> None:
         super().__init__()
         self.app = application
-        self.window = window
-        self.left_headerbar_box.set_allocation(self.window.pycryptor_sidebar.get_allocation())
         # Set about dialog logo
         self.pycryptor_about_dialog.set_logo(
             GdkPixbuf.Pixbuf.new_from_file_at_size(

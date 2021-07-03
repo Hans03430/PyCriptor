@@ -32,7 +32,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.pycryptor_sidebar_stack.add_titled(AtbashView(self.app), 'Atbash Cipher', 'Atbash Cipher')
         self.pycryptor_sidebar_stack.add_titled(VigenereView(self.app), 'Vigenère Cipher', 'Vigenère Cipher')
         # Add header bar
-        self.header_bar = HeaderBar(self.app, self)
+        self.header_bar = HeaderBar(self.app)
         self.set_titlebar(self.header_bar)
 
     @property

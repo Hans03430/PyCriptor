@@ -2,49 +2,12 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkAboutDialog" id="pycryptor_about_dialog">
-    <property name="can-focus">False</property>
-    <property name="type-hint">dialog</property>
-    <property name="program-name">PyCryptor</property>
-    <property name="version">1.0.2</property>
-    <property name="comments" translatable="yes">GUI program that does plain text encryption/decryption.</property>
-    <property name="website">https://github.com/Hans03430/PyCryptor</property>
-    <property name="authors">Hans Matos</property>
-    <property name="logo-icon-name">image-missing</property>
-    <property name="license-type">gpl-3-0</property>
-    <child internal-child="vbox">
-      <object class="GtkBox">
-        <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can-focus">False</property>
-            <property name="layout-style">end</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
-  </object>
   <template class="HeaderBar" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <child>
       <object class="GtkHeaderBar" id="left_headerbar">
+        <property name="width-request">200</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
@@ -89,6 +52,7 @@
       <object class="GtkHeaderBar" id="right_headerbar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="title" translatable="yes">PyCryptor</property>
         <property name="show-close-button">True</property>
         <child>
           <placeholder/>
@@ -137,6 +101,44 @@
             <property name="name">page0</property>
             <property name="title" translatable="yes">page0</property>
           </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="pycryptor_about_dialog">
+    <property name="can-focus">False</property>
+    <property name="type-hint">dialog</property>
+    <property name="program-name">PyCryptor</property>
+    <property name="version">1.0.2</property>
+    <property name="comments" translatable="yes">GUI program that does plain text encryption/decryption.</property>
+    <property name="website">https://github.com/Hans03430/PyCryptor</property>
+    <property name="authors">Hans Matos</property>
+    <property name="logo-icon-name">image-missing</property>
+    <property name="license-type">gpl-3-0</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
